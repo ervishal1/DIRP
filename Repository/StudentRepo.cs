@@ -26,5 +26,23 @@ namespace DIRP.Repository
         {
             return _context.Students.FirstOrDefault(x => x.Id == id);
         }
+
+        public void UpdateData(Student student)
+        {
+            _context.Students.Update(student);
+            _context.SaveChanges();
+        }
+
+        public void DeleteStudent(Student student)
+        {
+           _context.Students.Remove(student);
+            _context.SaveChanges();
+        }
+
+        public void Create(Student student)
+        {
+            _context.Students.Add(student);
+            _context.SaveChanges();
+        }
     }
 }

@@ -10,5 +10,8 @@ namespace DIRP.Infrastructure
     {
         List<Student> GetAll();
         Student GetById(int id);
+        void Create(Student student);
+        void UpdateData(Student student);
+        void DeleteStudent(Student student);
     }
 }

@@ -26,6 +26,11 @@ namespace DIRP.Controllers
         public IActionResult Index()
         {
             var item = _repo.GetAll();
+            return View(item);
+        }
+
+        public IActionResult Create()
+        {
             return View();
         }
 
@@ -35,6 +40,37 @@ namespace DIRP.Controllers
             return View(item);
         }
 
+        public IActionResult Edit(int id)
+        {
+            var item = _repo.GetById(id);
+            return View(item);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var item = _repo.GetById(id);
+            return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Student student)
+        {
+            _repo.UpdateData(student);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Student student)
+        {
+            _repo.DeleteStudent(student);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Create(Student student)
+        {
+            _repo.Create(student);
+            return RedirectToAction("Index");
+        }
         public IActionResult Privacy()
         {
             return View();
